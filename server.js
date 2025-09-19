@@ -2,11 +2,13 @@ require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
 const app = express();
 require('express-ws')(app);
 const PORT = process.env.PORT || 3000;
 const ROBLOX_SECRET = process.env.ROBLOX_OTHER_KEY || 'TEST';
 
+app.use(helmet());
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
